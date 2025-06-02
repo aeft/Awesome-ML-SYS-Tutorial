@@ -5,7 +5,7 @@
 
 ## 概念
 
-constraint decoding 和 structed output 是同一个概念的一体两面，后者表达的是效果，希望模型的输出符合特定的结构，而后者则描述了方法，在模型的 decoding 阶段加以约束。当然，更早的一个说法是 json decoding，但是显得非常狭隘了，因为理论上任何 CFG（Context Free Grammar 上下文无关文法）都可以被 constraint decoding 所表达，而 CFG 的表达能力远超 JSON。总之，在非常多的场景下，我们希望模型能够输出特定的结构，便于我们后续 parsing，而实现这一目标的方法就是 constraint decoding。
+constraint decoding 和 structed output 是同一个概念的一体两面，后者表达的是效果，希望模型的输出符合特定的结构，而前者则描述了方法，在模型的 decoding 阶段加以约束。当然，更早的一个说法是 json decoding，但是显得非常狭隘了，因为理论上任何 CFG（Context Free Grammar 上下文无关文法）都可以被 constraint decoding 所表达，而 CFG 的表达能力远超 JSON。总之，在非常多的场景下，我们希望模型能够输出特定的结构，便于我们后续 parsing，而实现这一目标的方法就是 constraint decoding。
 
 ## 基本原理
 
@@ -28,7 +28,7 @@ constraint decoding 和 structed output 是同一个概念的一体两面，后�
 - 表达能力更强：利用 CFG 更好的表达嵌套结构，这是 JSON 很难做到的；
 - 算法和系统优化：通过并行和 overlap 策略，降低了 overhead；
 
-先谈表达能力，CFG 是 JSON 的超级，可以利用 CFG 来表达更复杂的结构，比如 SQL 和 Cypher。X-Grammar 主要通过 [EBNF](https://www.wikiwand.com/en/articles/Extended_Backus%E2%80%93Naur_form) 来表达 CFG，而通过 [PDA](https://www.wikiwand.com/en/articles/Pushdown_automaton) 来在数据结构上实现 CFG。
+先谈表达能力，CFG 是 JSON 的超集，可以利用 CFG 来表达更复杂的结构，比如 SQL 和 Cypher。X-Grammar 主要通过 [EBNF](https://www.wikiwand.com/en/articles/Extended_Backus%E2%80%93Naur_form) 来表达 CFG，而通过 [PDA](https://www.wikiwand.com/en/articles/Pushdown_automaton) 来在数据结构上实现 CFG。
 
 ### 算法优化
 
